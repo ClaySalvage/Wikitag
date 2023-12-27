@@ -1,0 +1,5 @@
+services:
+    wongery.wikitext.listener:
+        class: wongery\wikitext\event\listener
+        tags:
+            - { name: event.listener }
