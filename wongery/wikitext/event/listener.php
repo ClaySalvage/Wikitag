@@ -48,8 +48,8 @@ class listener implements EventSubscriberInterface
 
 	public function parse_wikitext($event)
 	{
-		// $endpoint = "http://www.virtualwongery.com/w/api.php";
-		$endpoint = "https://www.wongery.com/w/api.php";
+		$endpoint = "http://www.virtualwongery.com/w/api.php";
+		// $endpoint = "https://www.wongery.com/w/api.php";
 		// I tried to get it to read this from composer.json, but no luck so far...
 		// You'll have to change it manually.  Sorry.
 		// You also have to set $wgEnableScaryTranscluding to true in your
@@ -59,7 +59,7 @@ class listener implements EventSubscriberInterface
 			return true;
 		$newstring = '';
 		$oldstring = $event['html'];
-		while ($pos = strpos($oldstring, WIKISTARTTAG)) {
+		while (($pos = strpos($oldstring, WIKISTARTTAG)) !== false) {
 			$newstring .= substr($oldstring, 0, $pos);
 			$oldstring = substr($oldstring, $pos + strlen(WIKISTARTTAG));
 			$wikitext = "";
