@@ -31,6 +31,7 @@
     "display-name": "wongery/wikitext",
     "soft-require": {
       "phpbb/phpbb": "3.3.0"
-    }
+    },
+    "endpoint": "https://www.wongery.com/w/api.php"
   }
 }
