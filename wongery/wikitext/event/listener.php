@@ -62,12 +62,6 @@ class listener implements EventSubscriberInterface
 		while ($pos = strpos($oldstring, WIKISTARTTAG)) {
 			$newstring .= substr($oldstring, 0, $pos);
 			$oldstring = substr($oldstring, $pos + strlen(WIKISTARTTAG));
-			echo "newstring: ";
-			var_dump($newstring);
-			echo "\n";
-			echo "oldstring: ";
-			var_dump($oldstring);
-			echo "\n";
 			$wikitext = "";
 			$pos = strpos($oldstring, WIKIENDTAG);
 			// Broken for nested spans inside wikitext, but that's not an issue... yet.
@@ -81,22 +75,10 @@ class listener implements EventSubscriberInterface
 			}
 			$wikitext .= substr($oldstring, 0, $pos);
 			$oldstring = substr($oldstring, $pos + strlen(WIKIENDTAG));
-			echo "wikitext: ";
-			var_dump($wikitext);
-			echo "\n";
-			echo "oldstring: ";
-			var_dump($oldstring);
-			echo "\n";
 			$newstring .= MWParse($wikitext, $endpoint);
 		}
-		echo "oldstring: ";
-		var_dump($oldstring);
-		echo "\n";
 		$newstring .= $oldstring;
 
-		echo "newstring: ";
-		var_dump($newstring);
-		echo "\n";
 		$event['html'] = $newstring;
 	}
 }
